@@ -142,7 +142,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/13/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/14/%E2%80%9C%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E2%80%9D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2399883456,2829025738&fm=26&gp=0.jpg">
@@ -156,7 +156,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/13/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2020/10/14/%E2%80%9C%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E2%80%9D/" class="post-title-link" itemprop="url">“使用hexo搭建个人博客过程中踩过的坑”</a>
         </h2>
 
         <div class="post-meta">
@@ -165,8 +165,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-10-13 17:18:33" itemprop="dateCreated datePublished" datetime="2020-10-13T17:18:33+08:00">2020-10-13</time>
+              <time title="Created: 2020-10-14 09:41:41 / Modified: 10:12:52" itemprop="dateCreated datePublished" datetime="2020-10-14T09:41:41+08:00">2020-10-14</time>
             </span>
 
           
@@ -180,19 +181,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+          <p>​    在使用hexo搭建个人博客的过程中，遇到了很多的坑，今于是在此记录一下。</p>
+<h4 id="1、node-js对windows系统的兼容问题"><a href="#1、node-js对windows系统的兼容问题" class="headerlink" title="1、node.js对windows系统的兼容问题"></a>1、node.js对windows系统的兼容问题</h4><p>​    因为本人是win7的死忠党，所以在安装node.Js的过程中没有考虑到版本兼容问题，第一次安装node.js失败，百度了一下，node.js最新版本对于系统的最低要求是win8.1，于是乎，失败。继续百度ng。。。</p>
+<p>​      1个小时后，无意中翻到一位大佬的博客说，win7支持12.16.0以下的node.js，立即安排上！果不其然，成功了。</p>
+<h4 id="2、hexo-deployer-git插件问题"><a href="#2、hexo-deployer-git插件问题" class="headerlink" title="2、hexo-deployer-git插件问题"></a>2、hexo-deployer-git插件问题</h4><p>​    在本地成功部署github+hexo环境并成功预览后，尝试同步至git仓库，在hexo d的时候报错了，提示我缺少git，这个坑简单，一条命令解决npm install –save hexo-deployer-git。</p>
+<h4 id="3、hexo主题选择问题"><a href="#3、hexo主题选择问题" class="headerlink" title="3、hexo主题选择问题"></a>3、hexo主题选择问题</h4><p>​    说实话，hexo的默认主题是真的丑，奈何自己的开发时间有限，只能找度娘要，尝试了很多花里胡哨的主题，总是更换失败，一直以为是自己的问题，看了下报错日志才发现，是主题的问题，好几年没有更新了，在此吐槽一下，不能用不要放到官网啊，缺少各种包和组件，我安装不累的嘛！在尝试了很多主题后，选择了大众推荐度最高的next主题，真香。</p>
+<h4 id="4、域名解析"><a href="#4、域名解析" class="headerlink" title="4、域名解析"></a>4、域名解析</h4><p>​    买域名的时候，xx云套餐里送了域名解析服务，解析完成后，，输入自己的域名，还是不能成功跳转，于是乎百度了一下，原来，域名解析之后还要在github配置github pages的Custom domain，保存自己的域名才能生效，soga！</p>
+<p>​    一顿操作，搞定！打开skyless.top，还是不能跳转，心态雪崩。</p>
+<p>​    又是一般百度，不得不说，就没有度娘不知道的事，度娘牛逼，原来域名解析后，十分钟后才会生效，坐等…</p>
+<p>​    十分钟后，光速打开自己的博客，成功跳转，nice！</p>
+<h4 id="5、skyless-top域名由来"><a href="#5、skyless-top域名由来" class="headerlink" title="5、skyless.top域名由来"></a>5、skyless.top域名由来</h4><p>​    github pages用的也很香，但是xxx.github.io这个域名，一点都不个性好吗，像我们这种有格调的人，域名也必须有格调，不然哪来的动力呢！打开阿里云，输入心仪的.com域名，50多w，emmm，xxx.github.io这个域名也不错的哇，.com也就一般般，没错，就是这样。</p>
+<p>​    内心斗争了一上午，不要误会，我不是在纠结买不买，我是在纠结，哪里才能找到性价比又高，又有逼格的域名呢，于是抬头看天，sky，less，有了，skyless.top，我的第一个个人域名就这么随意且草率的诞生了。</p>
 
       
     </div>
