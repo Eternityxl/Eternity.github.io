@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python中如何自动导入缺失的库</title>
+    <url>/2020/10/14/python%E4%B8%AD%E5%A6%82%E4%BD%95%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%BA%93/</url>
+    <content><![CDATA[<p><strong>python中如何自动导入缺失的库</strong></p>
+<p>在我这个菜鸟写python的过程中，经常碰到python库导入失败的问题，比如：ImportError: No module named ‘xxx’或者ModuleNotFoundError: No module named ‘xxx’。我就气的不行。</p>
+<p>据我个人了解，导入失败一般有两种问题：一种是导入自己写的模块（就是自己写的.py文件，感觉凭自己的水平，不可能是第一种），另一种是导入三方库，所以，这篇博客主要讨论第二种。</p>
+<p>解决这个问题很简单，缺什么库，导什么库就好了，或者使用恰当的替代方案。但是这个问题又分为三种情况：</p>
+<p><strong>一、单个模块中缺失的库</strong></p>
+<p>在写代码的时候，如果我们需要使用某个三方库（如 requests），但不确定实际运行的环境是否装了它，那么可以这样：</p>
+<p>try:</p>
+<p>  import requests</p>
+<p>except ImportError:</p>
+<p>  import os</p>
+<p>  os.system(‘pip install requests’)</p>
+<p>  import requests</p>
+<p>这样写的效果是，如果找不到 requests 库，就先安装，再导入。</p>
+<p>在某些开源项目中，我们可能还会看到如下的写法（以 json 为例）：</p>
+<p>try:</p>
+<p>  import simplejson as json</p>
+<p>except ImportError:</p>
+<p>  import json</p>
+<p>这样写的效果是，优先导入三方库 simplejson，如果找不到，那就使用内置的标准库 json。</p>
+<p>这种写法的好处是不需要导入额外的库，但它有个缺点，即需要保证那两个库在使用上是兼容的，如果在标准库中找不到替代的库，那就不可行了。</p>
+<p>如果真找不到兼容的标准库，也可以自己写一个模块（如 my_json.py），实现想要的东西，然后在 except 语句中导入它（凭我目前的水平，自己实现想要的东西，呵呵，痴人说梦）。</p>
+<p>try:</p>
+<p>  import simplejson as json</p>
+<p>except ImportError:</p>
+<p>  import my_json as json</p>
+<p><strong>二、整个项目中缺失的库</strong></p>
+<p>以上的思路是针对开发中的项目，但是它有几个不足：</p>
+<p>1、在代码中对每个可能缺失的三方库都 pip install，实在是太烦了，一点都不简洁；</p>
+<p>2、某个三方库无法被标准库或自己手写的库替代，该怎么办？（不存在的，我手写不出来）</p>
+<p>3、已成型的项目，不允许做这些修改怎么办？</p>
+<p>所以这里的主要问题是：<strong>有一个项目，想要部署到新的机器上，它涉及很多三方库，但是机器上都没有预装，该怎么办？</strong></p>
+<p>对于一个合规的项目，按照约定，通常它会包含一个“<strong>requirements.txt</strong> ”文件，记录了该项目的所有依赖库及其所需的版本号。这是在项目发布前，使用命令pip freeze &gt; requirements.txt 生成的。</p>
+<p>使用命令pip install -r requirements.txt （在该文件所在目录执行，或在命令中写全文件的路径），就能自动把所有的依赖库给装上。</p>
+<p>但是，如果项目不合规，或者由于其它倒霉的原因，我们没有这样的文件，又该如何是好？</p>
+<p>一个笨方法就是，把项目跑起来，等它出错，遇到一个导库失败，就手动装一个，然后再跑一遍项目，遇到导库失败就装一下，如此循环……（此处省略 1 万句脏话）……</p>
+<p><img src="D:/Summary/2019/0722/weixinobU7Vju1XqMa66fQQaTbRY4zBH20/5b7035f43d474d0daec29371bd3ebb13/640.webp?lastModify=1602670122"></p>
+<p><strong>三、自动导入任意缺失的库</strong></p>
+<p><strong>有没有一种更好的可以自动导入缺失的库的方法呢？答案肯定是有的，如果没有，那我写这篇博客干什么，闲的吗，电费不要钱啊，流量不要钱啊！</strong></p>
+<p>来！先看看效果：</p>
+<p><img src="D:/Summary/2019/0722/weixinobU7Vju1XqMa66fQQaTbRY4zBH20/97f212d52a1c400fbb36437c15b2a4c5/640.webp?lastModify=1602670122" alt="img"></p>
+<p>怎么样，是不是perfect！</p>
+<p>我们以 tornado 为例，第一步操作可看出，我们没有装过 tornado，所以导入失败了，经过第二步操作后，再次导入 tornado 时，程序会帮我们自动下载并安装好 tornado，所以不再报错。</p>
+<p>第二步导入的autoinstall 是我们手写的模块，代码如下：</p>
+<p>import sys</p>
+<p>import os</p>
+<p>from importlib import import_module</p>
+<p>class AutoInstall():</p>
+<p>  _loaded = set()</p>
+<p>  @classmethod</p>
+<p>  def find_spec(cls, name, path, target=None):</p>
+<p>​      if path is None and name not in cls._loaded:</p>
+<p>​        cls._loaded.add(name)</p>
+<p>​        print(“Installing”, name)</p>
+<p>​        try:</p>
+<p>​          result = os.system(‘pip install {}’.format(name))</p>
+<p>​          if result == 0:</p>
+<p>​            return import_module(name)</p>
+<p>​        except Exception as e:</p>
+<p>​          print(“Failed”, e)</p>
+<p>​      return None</p>
+<p>sys.meta_path.append(AutoInstall)</p>
+<p>这段代码中使用了sys.meta_path ，我们先打印一下，看看它是个什么东西？</p>
+<p><img src="file://D:/Summary/2019/0722/weixinobU7Vju1XqMa66fQQaTbRY4zBH20/e890d8337bce4b34b5d3aee3221ed031/640.webp?lastModify=1602670122" alt="img"></p>
+<p>Python 3 的 import 机制在查找过程中，大致顺序如下：</p>
+<ul>
+<li>在 sys.modules 中查找，它缓存了所有已导入的模块</li>
+<li>在 sys.meta_path 中查找，它支持自定义的加载器</li>
+<li>在 sys.path 中查找，它记录了一些库所在的目录名</li>
+<li>若未找到，抛出ImportError异常</li>
+</ul>
+<p>其中要注意，sys.meta_path 在不同的 Python 版本中有所差异，比如它在 Python 2 与 Python 3 中差异很大；在较新的 Python 3 版本（3.4+）中，自定义的加载器需要实现find_spec方法，而早期的版本用的则是find_module。</p>
+<p><img src="file://D:/Summary/2019/0722/weixinobU7Vju1XqMa66fQQaTbRY4zBH20/97d4807813b14e0aa28acc5f3c9a329d/clipboard.png?lastModify=1602670122" alt="img"></p>
+<p>以上代码是一个自定义的类库加载器 AutoInstall，可以实现自动导入三方库的目的。需要说明一下，这种方法会“劫持”所有新导入的库，破坏原有的导入方式，因此也可能出现一些奇奇怪怪的问题，所以要当心。</p>
+<p>sys.meta_path 属于 Python 探针的一种运用。探针，即import hook，是 Python 几乎不受人关注的机制，但它可以做很多事，例如加载网络上的库、在导入模块时对模块进行修改、自动安装缺失库、上传审计信息、延迟加载等等。</p>
+<p>算了，不说了。来个解决方案的总结：</p>
+<ul>
+<li>可以用 try…except 方式，实现简单的三方库导入或者替换</li>
+<li>已知全部缺失的依赖库时（如 requirements.txt），可以手动安装</li>
+<li>利用 sys.meta_path，可以自动导入任意的缺失库</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>web测试与app测试的区别</title>
     <url>/2020/10/14/web%E6%B5%8B%E8%AF%95%E4%B8%8Eapp%E6%B5%8B%E8%AF%95%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p><strong>web测试与app测试区别</strong></p>
