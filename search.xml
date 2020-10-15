@@ -86,6 +86,22 @@
 ]]></content>
   </entry>
   <entry>
+    <title>“使用hexo搭建个人博客过程中踩过的坑”</title>
+    <url>/2020/10/14/%E2%80%9C%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E2%80%9D/</url>
+    <content><![CDATA[<p>​    在使用hexo搭建个人博客的过程中，遇到了很多的坑，今于是在此记录一下。</p>
+<h4 id="1、node-js对windows系统的兼容问题"><a href="#1、node-js对windows系统的兼容问题" class="headerlink" title="1、node.js对windows系统的兼容问题"></a>1、node.js对windows系统的兼容问题</h4><p>&emsp;&emsp;因为本人是win7的死忠党，所以在安装node.Js的过程中没有考虑到版本兼容问题，第一次安装node.js失败，百度了一下，node.js最新版本对于系统的最低要求是win8.1，于是乎，失败。继续百度ng。。。</p>
+<p>&emsp;&emsp;1个小时后，无意中翻到一位大佬的博客说，win7支持12.16.0以下的node.js，立即安排上！果不其然，成功了。</p>
+<h4 id="2、hexo-deployer-git插件问题"><a href="#2、hexo-deployer-git插件问题" class="headerlink" title="2、hexo-deployer-git插件问题"></a>2、hexo-deployer-git插件问题</h4><p>&emsp;&emsp;在本地成功部署github+hexo环境并成功预览后，尝试同步至git仓库，在hexo d的时候报错了，提示我缺少git，这个坑简单，一条命令解决npm install –save hexo-deployer-git。</p>
+<h4 id="3、hexo主题选择问题"><a href="#3、hexo主题选择问题" class="headerlink" title="3、hexo主题选择问题"></a>3、hexo主题选择问题</h4><p>&emsp;&emsp;说实话，hexo的默认主题是真的丑，奈何自己的开发时间有限，只能找度娘要，尝试了很多花里胡哨的主题，总是更换失败，一直以为是自己的问题，看了下报错日志才发现，是主题的问题，好几年没有更新了，在此吐槽一下，不能用不要放到官网啊，缺少各种包和组件，我安装不累的嘛！在尝试了很多主题后，选择了大众推荐度最高的next主题，真香。</p>
+<h4 id="4、域名解析"><a href="#4、域名解析" class="headerlink" title="4、域名解析"></a>4、域名解析</h4><p>&emsp;&emsp;买域名的时候，xx云套餐里送了域名解析服务，解析完成后，，输入自己的域名，还是不能成功跳转，于是乎百度了一下，原来，域名解析之后还要在github配置github pages的Custom domain，保存自己的域名才能生效，soga！</p>
+<p>&emsp;&emsp;一顿操作，搞定！打开skyless.top，还是不能跳转，心态雪崩。</p>
+<p>&emsp;&emsp;又是一般百度，不得不说，就没有度娘不知道的事，度娘牛逼，原来域名解析后，十分钟后才会生效，坐等…</p>
+<p>&emsp;&emsp;十分钟后，光速打开自己的博客，成功跳转，nice！</p>
+<h4 id="5、skyless-top域名由来"><a href="#5、skyless-top域名由来" class="headerlink" title="5、skyless.top域名由来"></a>5、skyless.top域名由来</h4><p>&emsp;&emsp;github pages用的也很香，但是xxx.github.io这个域名，一点都不个性好吗，像我们这种有格调的人，域名也必须有格调，不然哪来的动力呢！打开阿里云，输入心仪的.com域名，50多w，emmm，xxx.github.io这个域名也不错的哇，.com也就一般般，没错，就是这样。</p>
+<p>&emsp;&emsp;内心斗争了一上午，不要误会，我不是在纠结买不买，我是在纠结，哪里才能找到性价比又高，又有逼格的域名呢，于是抬头看天，sky，less，有了，skyless.top，我的第一个个人域名就这么随意且草率的诞生了。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>web测试与app测试的区别</title>
     <url>/2020/10/14/web%E6%B5%8B%E8%AF%95%E4%B8%8Eapp%E6%B5%8B%E8%AF%95%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p><strong>web测试与app测试区别</strong></p>
@@ -137,22 +153,6 @@
 <li><p><strong>权限测试</strong>：设置某个 App 是否可以获取该权限，例如是否可访问通讯录、相册、照相机等</p>
 </li>
 </ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>“使用hexo搭建个人博客过程中踩过的坑”</title>
-    <url>/2020/10/14/%E2%80%9C%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91%E2%80%9D/</url>
-    <content><![CDATA[<p>​    在使用hexo搭建个人博客的过程中，遇到了很多的坑，今于是在此记录一下。</p>
-<h4 id="1、node-js对windows系统的兼容问题"><a href="#1、node-js对windows系统的兼容问题" class="headerlink" title="1、node.js对windows系统的兼容问题"></a>1、node.js对windows系统的兼容问题</h4><p>&emsp;&emsp;因为本人是win7的死忠党，所以在安装node.Js的过程中没有考虑到版本兼容问题，第一次安装node.js失败，百度了一下，node.js最新版本对于系统的最低要求是win8.1，于是乎，失败。继续百度ng。。。</p>
-<p>&emsp;&emsp;1个小时后，无意中翻到一位大佬的博客说，win7支持12.16.0以下的node.js，立即安排上！果不其然，成功了。</p>
-<h4 id="2、hexo-deployer-git插件问题"><a href="#2、hexo-deployer-git插件问题" class="headerlink" title="2、hexo-deployer-git插件问题"></a>2、hexo-deployer-git插件问题</h4><p>&emsp;&emsp;在本地成功部署github+hexo环境并成功预览后，尝试同步至git仓库，在hexo d的时候报错了，提示我缺少git，这个坑简单，一条命令解决npm install –save hexo-deployer-git。</p>
-<h4 id="3、hexo主题选择问题"><a href="#3、hexo主题选择问题" class="headerlink" title="3、hexo主题选择问题"></a>3、hexo主题选择问题</h4><p>&emsp;&emsp;说实话，hexo的默认主题是真的丑，奈何自己的开发时间有限，只能找度娘要，尝试了很多花里胡哨的主题，总是更换失败，一直以为是自己的问题，看了下报错日志才发现，是主题的问题，好几年没有更新了，在此吐槽一下，不能用不要放到官网啊，缺少各种包和组件，我安装不累的嘛！在尝试了很多主题后，选择了大众推荐度最高的next主题，真香。</p>
-<h4 id="4、域名解析"><a href="#4、域名解析" class="headerlink" title="4、域名解析"></a>4、域名解析</h4><p>&emsp;&emsp;买域名的时候，xx云套餐里送了域名解析服务，解析完成后，，输入自己的域名，还是不能成功跳转，于是乎百度了一下，原来，域名解析之后还要在github配置github pages的Custom domain，保存自己的域名才能生效，soga！</p>
-<p>&emsp;&emsp;一顿操作，搞定！打开skyless.top，还是不能跳转，心态雪崩。</p>
-<p>&emsp;&emsp;又是一般百度，不得不说，就没有度娘不知道的事，度娘牛逼，原来域名解析后，十分钟后才会生效，坐等…</p>
-<p>&emsp;&emsp;十分钟后，光速打开自己的博客，成功跳转，nice！</p>
-<h4 id="5、skyless-top域名由来"><a href="#5、skyless-top域名由来" class="headerlink" title="5、skyless.top域名由来"></a>5、skyless.top域名由来</h4><p>&emsp;&emsp;github pages用的也很香，但是xxx.github.io这个域名，一点都不个性好吗，像我们这种有格调的人，域名也必须有格调，不然哪来的动力呢！打开阿里云，输入心仪的.com域名，50多w，emmm，xxx.github.io这个域名也不错的哇，.com也就一般般，没错，就是这样。</p>
-<p>&emsp;&emsp;内心斗争了一上午，不要误会，我不是在纠结买不买，我是在纠结，哪里才能找到性价比又高，又有逼格的域名呢，于是抬头看天，sky，less，有了，skyless.top，我的第一个个人域名就这么随意且草率的诞生了。</p>
 ]]></content>
   </entry>
 </search>
